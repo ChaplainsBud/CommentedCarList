@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Car List</h1>
+<a href="/add">Add a Car</a><br />
+<table>
+    <tr>
+        <th>Year</th>
+        <th>Make</th>
+        <th>Model</th>
+        <td>Actions</td>
+    </tr>
+    <tr th:each="car : ${cars}">
+        <td th:text="${car.year}"></td>
+        <td th:text="${car.make}"></td>
+        <td th:text="${car.model}"></td>
+        <td>
+            <a th:href="@{/update/{id}(id=${car.id})}">Update</a>
+            <a th:href="@{/update/{id}(id=${car.id})}">Update</a>
+            <a th:href="@{/update/{id}(id=${car.id})}">Update</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
+
+<!-- we can populate html files with objects from the HomeController page
+
+why is car in carform, but cars in ...list?
+
+I. car for carform
+
+HomeController ->  model.addAttribute("car", new Car());
+
+
+II. cars for list
+
+HomeController ->  model.addAttribute("cars", carRepository.findAll());
+
+
+-->
